@@ -2,25 +2,37 @@ import './App.css';
 import React, {useState, useEffect} from 'react';
 
 const workHoursSetUpList = [
-  {name: "maanantai", work_hours: 5},
-  {name: "tiistai", work_hours: 7},
-  {name: "keskiviikko", work_hours: 3},
-  {name: "torstai", work_hours: 5},
-  {name: "perjantai", work_hours: 0},
-  {name: "lauantai", work_hours: 9},
-  {name: "sunnuntai", work_hours: 12}
+  {name: "maanantai", work_hours: 8},
+  {name: "tiistai", work_hours: 8},
+  {name: "keskiviikko", work_hours: 8},
+  {name: "torstai", work_hours: 8},
+  {name: "perjantai", work_hours: 8},
+  {name: "lauantai", work_hours: 8},
+  {name: "sunnuntai", work_hours: 8}
 ];
 
+const monthSetUpList = [
+  {name: "tammikuu", salary: 1000, tax: 50},
+  {name: "helmikuu", salary: 1000, tax: 50},
+  {name: "maaliskuu", salary: 1000, tax: 50},
+  {name: "huhtikuu", salary: 1000, tax: 50},
+  {name: "toukokuu", salary: 1000, tax: 50},
+  {name: "kesäkuu", salary: 1000, tax: 50},
+  {name: "heinäkuu", salary: 1000, tax: 50},
+  {name: "elokuu", salary: 1000, tax: 50},
+  {name: "syyskuu", salary: 1000, tax: 50},
+  {name: "lokakuu", salary: 1000, tax: 50},
+  {name: "marraskuu", salary: 1000, tax: 50},
+  {name: "joulukuu", salary: 1000, tax: 50}
+];
+
+// 2.1-2.3
 const WorkHours = () => {
   const [weeklyWorkHours, setWeeklyWorkHours] = useState([]);
 
   useEffect(() => {
     setWeeklyWorkHours(workHoursSetUpList);
   }, []);
-
-  useEffect(() => {
-    console.log("weeklyWorkHours: ", weeklyWorkHours)
-  }, [weeklyWorkHours]);
 
   // 2.2 a
   const averageByFor = () => {
@@ -76,7 +88,6 @@ const WorkHours = () => {
 
   const handleWorkHourChange = (index) => (event) => {
     const newWeeklyWorkHours = JSON.parse(JSON.stringify(weeklyWorkHours));
-    console.log("index: ", index, "event:", event.target.value);
     newWeeklyWorkHours[index].work_hours = Number(event.target.value);
     setWeeklyWorkHours(newWeeklyWorkHours);
   }
@@ -93,15 +104,97 @@ const WorkHours = () => {
   );
 }
 
+// 2.4-2.5
 const Salaries = () => {
+  const [monthList, setMonthList] = useState([]);
+
+  useEffect(() => {
+    setMonthList(monthSetUpList);
+  }, []);
+
+  const handleSalaryChange = (index) => (event) => {
+    const newMonthList = JSON.parse(JSON.stringify(monthList));
+    newMonthList[index].salary = Number(event.target.value);
+    setMonthList(newMonthList);
+  }
+
+  const handleTaxChange = (index) => (event) => {
+    const newMonthList = JSON.parse(JSON.stringify(monthList));
+    newMonthList[index].tax = Number(event.target.value);
+    setMonthList(newMonthList);
+  }
+
   return(
     <div className="salaries">
-
+      <table>
+        <thead>
+          <tr><th>kuukausi</th><th>palkkatulot</th><th>tulot + 50%</th><th>veroprosentti</th><th>bruttopalkka</th></tr>
+        </thead>
+        <tbody>
+          {monthList.map((month, index) => 
+            <tr key={month.name}>
+              <td>{month.name}</td>
+              <td><input value={monthList[index].salary} onChange={handleSalaryChange(index)}></input></td>
+              <td>{monthList[index].salary * 1.5}</td>
+              <td><input value={monthList[index].tax} onChange={handleTaxChange(index)}></input></td>
+              <td>{monthList[index].salary - (monthList[index].salary * (monthList[index].tax / 100))}</td>
+            </tr>)}
+          <tr>
+            <td>summat</td>
+            <td>{monthList.reduce((sum, cur) => cur.salary + sum, 0)}</td>
+            <td>{monthList.reduce((sum, cur) => (cur.salary * 1.5) + sum, 0)}</td>
+            <td></td>
+            <td>{monthList.reduce((sum, cur) => (cur.salary - (cur.salary * (cur.tax / 100))) + sum, 0)}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }
 
+// 2.6-2.13
 const SortTables = () => {
+
+  // 2.6
+  const sortWithJSSort = () => {
+    const initialList = [1,4,100,2,5,4];
+  }
+
+  // 2.7
+  const sortAlphaJSSort = () => {
+    const initialList = ["1", "4", "100", "2", "5", "4"];
+  }
+
+  // 2.8
+  /*
+
+  */
+
+  // 2.9
+  const reformList1 = () => {
+    const initialList = [{"ma":44}, {"pe":100}, {"ke":21}, {"ti": 66},{"la":22}];
+  }
+
+  // 2.10
+  const reformList2 = () => {
+    const initialList = [{"ma":44}, {"pe":100}, {"ke":21}, {"ti": 66},{"la":22}];
+  }
+
+  // 2.11
+  const reformList3 = () => {
+    const initialList = [{"ma":44}, {"pe":100}, {"ke":21}, {"ti": 66},{"la":22}];
+  }
+
+  // 2.12
+  const reformList4 = () => {
+    const initialList = [{"ma":44}, {"pe":100}, {"ke":21}, {"ti": 66},{"la":22}];
+  }
+
+  // 2.13
+  const reformObject = () => {
+    const initialObject = {"ma":44, "pe":100, "ke":21, "ti": 66,"la":22};
+  }
+
   return(
     <div className="sortTables">
 
