@@ -1,0 +1,32 @@
+{
+  "weekdays": [
+    {
+      "name": "monday",
+      "workHours": 0
+    },
+    {
+      "name": "tuesday",
+      "workHours": 0
+    },
+    {
+      "name": "wednesday",
+      "workHours": 0
+    },
+    {
+      "name": "thursday",
+      "workHours": 0
+    },
+    {
+      "name": "friday",
+      "workHours": 0
+    },
+    {
+      "name": "saturday",
+      "workHours": 0
+    },
+    {
+      "name": "sunday",
+      "workHours": 0
+    }
+  ]
+}

@@ -1,23 +1,52 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState, useEffect} from 'react';
 
-function App() {
+const workHoursSetUpList = [
+  {day: "maanantai", work_hours: 7},
+  {day: "tiistai", work_hours: 6},
+  {day: "keskiviikko", work_hours: 8},
+  {day: "torstai", work_hours: 5},
+  {day: "perjantai", work_hours: 8},
+  {day: "lauantai", work_hours: 2},
+  {day: "sunnuntai", work_hours: 3}
+];
+
+const WorkHours = () => {
+  const [weeklyWorkHours, setWeeklyWorkHours] = useState([]);
+
+  useEffect(() => {
+    setWeeklyWorkHours(workHoursSetUpList);
+  }, []);
+
+  return(
+    <div className="workHours">
+
+    </div>
+  );
+}
+
+const Salaries = () => {
+  return(
+    <div className="salaries">
+
+    </div>
+  );
+}
+
+const SortTables = () => {
+  return(
+    <div className="sortTables">
+
+    </div>
+  );
+}
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <WorkHours/>
+      <Salaries/>
+      <SortTables/>
     </div>
   );
 }
