@@ -200,7 +200,7 @@ const SortTables = () => {
       }
       return 0;
     });
-    console.log(sortedList);
+    console.log("2.9", sortedList);
   }
 
   // 2.10
@@ -219,21 +219,21 @@ const SortTables = () => {
       }
       return 0;
     });
-    console.log(sortedList);
+    console.log("2.10", sortedList);
   }
 
   // 2.11
   const reformList3 = () => {
     const initialList = [{"ma":44}, {"pe":100}, {"ke":21}, {"ti": 66},{"la":22}];
     const filteredList = initialList.filter((item) => item[Object.keys(item)[0]] % 2 ? false : true);
-    console.log(filteredList);
+    console.log("2.11", filteredList);
   }
 
   // 2.12
   const reformList4 = () => {
     const initialList = [{"ma":44}, {"pe":100}, {"ke":21}, {"ti": 66},{"la":22}];
     const filteredList = initialList.filter((item) => Object.keys(item)[0][1] === 'e');
-    console.log(filteredList);
+    console.log("2.12", filteredList);
   }
 
   // 2.13
@@ -245,7 +245,7 @@ const SortTables = () => {
       new_item[item] = initialObject[item]
       formedList.push(new_item)
     });
-    console.log(formedList);
+    console.log("2.13", formedList);
   }
 
   sortWithJSSort();
