@@ -239,12 +239,10 @@ const SortTables = () => {
   // 2.13
   const reformObject = () => {
     const initialObject = {"ma":44, "pe":100, "ke":21, "ti": 66, "la":22};
-    const formedList = Object.keys(initialObject).map((item) => {
-      return({[item]: initialObject[item]});
-    });
+    const formedList = Object.keys(initialObject).map((item) => ({[item]: initialObject[item]}));
     console.log("2.13", formedList);
   }
-
+  
   sortWithJSSort();
   sortAlphaJSSort();
   reformList1();
