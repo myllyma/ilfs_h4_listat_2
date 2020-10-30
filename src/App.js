@@ -158,42 +158,103 @@ const SortTables = () => {
   // 2.6
   const sortWithJSSort = () => {
     const initialList = [1,4,100,2,5,4];
+    const sortedList = initialList.sort((a, b) => a - b);
+    console.log("2.6:", sortedList);
   }
 
   // 2.7
   const sortAlphaJSSort = () => {
     const initialList = ["1", "4", "100", "2", "5", "4"];
+    const sortedList = initialList.sort((a, b) => {
+      const nameA = a.toUpperCase();
+      const nameB = b.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+
+      return 0;
+    });
+    console.log("2.7:", sortedList);
   }
 
   // 2.8
-  /*
-
-  */
+  // Parametrina annettava funktio toimii käsittelijänä joka palauttaa:
+  // vähemmän kuin 0, jos a < b
+  // 0, jos a == b
+  // enemmän kuin 0, jos a > b
 
   // 2.9
   const reformList1 = () => {
     const initialList = [{"ma":44}, {"pe":100}, {"ke":21}, {"ti": 66},{"la":22}];
+    const sortedList = initialList.sort((a, b) => {
+      const a_keys = Object.keys(a);
+      const b_keys = Object.keys(b);
+      if (a[a_keys[0]] < b[b_keys[0]]) {
+        return -1;
+      }
+      if (a[a_keys[0]] > b[b_keys[0]]) {
+        return 1;
+      }
+      return 0;
+    });
+    console.log(sortedList);
   }
 
   // 2.10
   const reformList2 = () => {
     const initialList = [{"ma":44}, {"pe":100}, {"ke":21}, {"ti": 66},{"la":22}];
+    const dayOrder = ["ma", "ti", "ke", "to", "pe", "la", "su"];
+
+    const sortedList = initialList.sort((a, b) => {
+      const a_order = dayOrder.indexOf(Object.keys(a)[0]);
+      const b_order = dayOrder.indexOf(Object.keys(b)[0]);
+      if (a_order < b_order) {
+        return -1;
+      }
+      if (a_order > b_order) {
+        return 1;
+      }
+      return 0;
+    });
+    console.log(sortedList);
   }
 
   // 2.11
   const reformList3 = () => {
     const initialList = [{"ma":44}, {"pe":100}, {"ke":21}, {"ti": 66},{"la":22}];
+    const filteredList = initialList.filter((item) => item[Object.keys(item)[0]] % 2 ? false : true);
+    console.log(filteredList);
   }
 
   // 2.12
   const reformList4 = () => {
     const initialList = [{"ma":44}, {"pe":100}, {"ke":21}, {"ti": 66},{"la":22}];
+    const filteredList = initialList.filter((item) => Object.keys(item)[0][1] === 'e');
+    console.log(filteredList);
   }
 
   // 2.13
   const reformObject = () => {
-    const initialObject = {"ma":44, "pe":100, "ke":21, "ti": 66,"la":22};
+    const initialObject = {"ma":44, "pe":100, "ke":21, "ti": 66, "la":22};
+    const formedList = [];
+    Object.keys(initialObject).forEach((item) => {
+      const new_item = {}
+      new_item[item] = initialObject[item]
+      formedList.push(new_item)
+    });
+    console.log(formedList);
   }
+
+  sortWithJSSort();
+  sortAlphaJSSort();
+  reformList1();
+  reformList2();
+  reformList3();
+  reformList4();
+  reformObject();
 
   return(
     <div className="sortTables">
