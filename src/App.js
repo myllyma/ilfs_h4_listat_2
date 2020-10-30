@@ -239,11 +239,8 @@ const SortTables = () => {
   // 2.13
   const reformObject = () => {
     const initialObject = {"ma":44, "pe":100, "ke":21, "ti": 66, "la":22};
-    const formedList = [];
-    Object.keys(initialObject).forEach((item) => {
-      const new_item = {}
-      new_item[item] = initialObject[item]
-      formedList.push(new_item)
+    const formedList = Object.keys(initialObject).map((item) => {
+      return({[item]: initialObject[item]});
     });
     console.log("2.13", formedList);
   }
